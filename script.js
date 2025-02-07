@@ -5,29 +5,29 @@ const members = [
 
 
 
-//OLD WAY DEMO - CONSTRUCTOR FUNCTION
-function Employee(firstName, lastName, email, birthdate, salary) {
-    this.firstName = firstName;
-    this.lastName = lastName;
-    this.email = email;
-    this.birthdate = birthdate;
-    this.salary = salary;
-  }
+// //OLD WAY DEMO - CONSTRUCTOR FUNCTION
+// function Employee(firstName, lastName, email, birthdate, salary) {
+//     this.firstName = firstName;
+//     this.lastName = lastName;
+//     this.email = email;
+//     this.birthdate = birthdate;
+//     this.salary = salary;
+//   }
 
-  Employee.addEmployee = function(firstName, lastName, email, birthdate, salary) {
-    return new Employee(firstName, lastName, email, birthdate, salary);
-  };
+//   Employee.addEmployee = function(firstName, lastName, email, birthdate, salary) {
+//     return new Employee(firstName, lastName, email, birthdate, salary);
+//   };
 
-  Employee.prototype.editEmployee = function(updates) {
-    Object.assign(this, updates);
-  };
+//   Employee.prototype.editEmployee = function(updates) {
+//     Object.assign(this, updates);
+//   };
 
-  // Usage example:
-  const bill = Employee.addEmployee("Bill", "Doe", "bill@example.com", "1990-01-01", 50000);
-  console.log(bill);
+//   // Usage example:
+//   const bill = Employee.addEmployee("Bill", "Doe", "bill@example.com", "1990-01-01", 50000);
+//   console.log(bill);
 
-  bill.editEmployee({ salary: 7777777, email: "xxxxxxx@example.com" });
-  console.log(bill);
+//   bill.editEmployee({ salary: 7777777, email: "xxxxxxx@example.com" });
+//   console.log(bill);
 
 
 //ES6 way - CLASSES - Create a new Employee class that adds a new employee and console logs them
@@ -42,9 +42,57 @@ function Employee(firstName, lastName, email, birthdate, salary) {
 // 6. Try to get instances of your class object to display in the table.  You can set the innerhtml of the
 //    of the table to be empty and then replace it with the looped-through values of your object
 
+class Employee {
+  constructor (firstName, lastName, email, birthdate, salary) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.email = email;
+    this.birthdate = birthdate;
+  }
+}
 
+const dat = new Employee("Dat", "Ly", "dat@gmail.com", "2002-10-15");
+
+console.log(dat.firstName);
+
+const getEmployees = [
+  new Employee ("Chris", "Kelley", "chris@example.com", "1990-01-01"),
+  new Employee ("Josh", "Nipp", "Josh@example", "2021-08-01"),
+  new Employee ("Clint", "Tuttle", "clint@gmail.com", "1980-08-06")
+];
+
+console.log(getEmployees)
 
 
 
 //Try to output 3 instances of your class object into the table
+
+const table = document.getElementById("table");
+
+
+
+//Demo 3
+function processOrder(orderId, callback) {
+  console.log(`Processing order #${orderId}...`);
+  setTimeout(() => {
+    callback(`Order #${orderId} processed successfully`);
+  }, 2000); // Simulate 2-sec processing time
+}
+
+// Usage
+processOrder(101, (confirmation) => {
+  console.log('Email sent:', confirmation); 
+});
+
+
+function sendInvoice(clientName, callback) {
+  console.log(`Invoice sent for order from ${clientName}`);
+  setTimeout(() => {
+    callback(`${clientName}'s invoice sent`);
+  }, 1500); 
+}
+
+sendInvoice("Joe", (confirmation) => {
+  console.log('Email sent:', confirmation); 
+});
 
